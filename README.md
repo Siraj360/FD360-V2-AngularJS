@@ -16,7 +16,7 @@ September 21, 2015.
 
 __ScreenShot:__
 
-![alt tag](https://github.com/SirajGadhia/FD360-V2-AngularJS/blob/master/FD360Image2.PNG)
+![alt tag](https://github.com/SirajGadhia/FD360-V2-AngularJS/blob/master/FD360Image2.png)
 
 ![alt tag](https://github.com/SirajGadhia/FD360-AngularJS-BT/blob/master/FD360Image3.PNG)
 
