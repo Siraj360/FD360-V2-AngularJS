@@ -15,6 +15,9 @@ September 21, 2015.
 
 
 __ScreenShot:__
+
+![alt tag](https://github.com/SirajGadhia/FD360-V2-AngularJS/blob/master/FD360Image2.PNG)
+
 ![alt tag](https://github.com/SirajGadhia/FD360-AngularJS-BT/blob/master/FD360Image3.PNG)
 
 ![alt tag](https://github.com/SirajGadhia/FD360-AngularJS-BT/blob/master/FD360Image2.PNG)
@@ -25,6 +28,9 @@ __ScreenShot:__
  
 
 __YouTube:__
+
+[![IMAGE ALT TEXT HERE](https://i.ytimg.com/vi/sHlMKZWM75E/3.jpg?time=1448225068384)](https://www.youtube.com/watch?v=sHlMKZWM75E&list=UUywXaHmgyG4wd0pj1s3AZ7w)
+
 
 [![IMAGE ALT TEXT HERE](https://i.ytimg.com/vi/4rLXMoppZZA/2.jpg)](https://www.youtube.com/watch?v=4rLXMoppZZA&list=UUywXaHmgyG4wd0pj1s3AZ7w)
 
