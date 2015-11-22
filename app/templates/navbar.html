@@ -1,0 +1,42 @@
+﻿<div class="navbar navbar-default navbar-fixed-top" ng-controller="NavbarController as vm">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/Home" class="navbar-brand hidden-sm hidden-xs">FD360 : Employee Training Managment System V2.0</a>
+            <a href="/Home" class="navbar-brand visible-sm visible-xs">FD360 : ETMS 2.0</a>
+        </div>
+        
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav" id="navbar">
+                <li ng-class="vm.getClass('/Home')">
+                <a href="/Home"><i class="glyphicon glyphicon-home"></i></a>
+                </li>
+                <li ng-class="vm.getClass('/EmployeeDashboard')"><a href="/EmployeeDashboard">Employee Dashboard</a></li>
+                <li ng-class="vm.getClass('/CoursesAdmin')"><a href="/CoursesAdmin">Courses Admin</a></li>
+                <li ng-class="vm.getClass('/KPI')"><a href="/KPI">KPI</a></li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <span class="glyphicon glyphicon-user"></span> About Me <i class="glyphicon glyphicon-chevron-down"></i></a>
+                    <ul class="dropdown-menu" style="padding:12px;">
+                        <li><a target="_blank" href="http://www.siraj360.com/#Contact">Contact</a></li>
+                        <li class="divider"></li>
+                        <li><a target="_blank" href="http://www.siraj360.com/ng1/">FD360 Version 1.0</a></li>
+                        <li><a target="_blank" href="http://www.siraj360.com/ng/">Siraj 360 Application</a></li>
+                        <li><a target="_blank" href="http://www.GadhiaSiraj.com/">MVC RWD Application</a></li>
+                        <li><a target="_blank" href="http://www.GadhiaSiraj.net">.Net 3.5 Website</a></li>
+                        <li><a target="_blank" href="http://www.gadhiasiraj.com/Screenshots">Screenshots Gallery</a></li>
+                        <li class="divider"></li>
+                        <li><a target="_blank" href="http://www.GadhiaSiraj.com/Home/Contact">About Me</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

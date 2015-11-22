@@ -1,0 +1,66 @@
+﻿<!doctype html >
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+
+
+    <title>Angular JS and Bootstrap Sample Application</title>
+    <base href="/"> 
+    
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="app/css/FD360.css" rel="stylesheet" />
+    <link href="app/css/toastr.min.css" rel="stylesheet" />
+</head>
+<body ng-app="FD360">
+
+<div ng-include="'app/templates/navbar.html'"></div>
+
+<div class="container body-content" style="padding-top:54px;" ng-init="is_finish_loading=false">
+      
+    <div ng-view></div>
+
+    <div ng-include="'app/templates/footer.html'"></div>
+
+</div>
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-route.min.js"></script>  
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-animate.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-messages.js"></script>
+   
+    <script src="app/js/libs/ui-bootstrap-custom-0.13.3.min.js"></script>
+    <script src="app/js/libs/ui-bootstrap-custom-tpls-0.13.3.min.js"></script>
+    <script src="app/js/libs/toastr.min.js"></script>
+    <script src="app/js/libs/d3.min.js"></script>
+    <script src="app/js/libs/angular-charts.min.js"></script>
+
+    <script src="app/js/directive/Directive360.js"></script>
+    <script src="app/js/filter/Filter360.js"></script>
+    <script src="app/js/FD360.js"></script>
+    <script src="app/js/service/DataFactory.js"></script>
+    <script src="app/js/service/NoticeAndLogFactory.js"></script>
+    <script src="app/js/controller/NavbarController.js"></script>
+    <script src="app/js/controller/EmployeeController.js"></script>
+    <script src="app/js/controller/HomeController.js"></script>
+    <script src="app/js/controller/AppNoteController.js"></script>
+    <script src="app/js/controller/KPIController.js"></script>
+    <script src="app/js/controller/CoursesAdminModalsController.js"></script>
+    <script src="app/js/controller/CoursesAdminController.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+

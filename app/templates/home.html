@@ -1,0 +1,70 @@
+﻿<div class="row title360">
+    <h5> A sample single page application (SPA) developed with <strong>AngularJS 1.4.5</strong> and <strong>Bootstrap 3.3.5</strong>.</h5>
+</div>
+
+<div class="row">
+    <ng-stats360 
+        number={{4*vm.AllEmployees}} 
+        comments="Cources assigned to {{vm.AllEmployees}} employees." 
+        colour="primary" type="user"
+        goto="/ng/EmployeeDashboard"         >
+    </ng-stats360>
+    <ng-stats360 
+        number={{vm.AllCompleted}}
+        comments="Employees has complted all 4 courses - {{vm.AllCompleted/vm.AllEmployees | percentage:2}}." 
+        colour="green" 
+        type="thumbs-up"
+        goto="/ng/KPI">
+    </ng-stats360>
+    <ng-stats360 
+        number={{vm.AllPending}}
+        comments="Employees has yet not strated - {{vm.AllPending/vm.AllEmployees | percentage:2}}." 
+        colour="red" 
+        type="support"
+        goto="/ng/KPI">
+    </ng-stats360>
+    <ng-stats360 
+        number={{vm.AllCourses}} 
+        comments="Cources, 4 cources are assigned to each one." 
+        colour="yellow" 
+        type="puzzle-piece"
+        goto="/ng/CoursesAdmin">
+    </ng-stats360>
+
+
+</div>
+
+<div class="alert alert-warning alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    &nbsp;&nbsp;<strong>Note:</strong>&nbsp;&nbsp;Data are static json array, changes will be lost on page refresh.<br />
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active">
+                <a ng-tab360 href="#welcome" aria-controls="welcome" role="tab" data-toggle="tab">Welcome</a></li>
+                <li role="presentation">
+                <a ng-tab360  href="#key_features" aria-controls="key_features" role="tab" data-toggle="tab">Key Features</a></li>
+                <li role="presentation">
+                <a ng-tab360 href="#demo" aria-controls="demo" role="tab" data-toggle="tab">Demo</a></li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="welcome">
+                    <div ng-include="'app/templates/tabs/tab_welcome.html'" style="margin-top: -15px;"></div>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="key_features">
+                    <div ng-include="'app/templates/tabs/tab_key_features.html'" style="margin-top: -10px;"></div>
+               </div>
+                <div role="tabpanel" class="tab-pane" id="demo">
+                    <div ng-include="'app/templates/tabs/tab_demo.html'" style="margin-top: -10px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

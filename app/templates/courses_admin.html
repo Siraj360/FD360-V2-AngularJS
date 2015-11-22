@@ -1,0 +1,356 @@
+﻿<script type="text/ng-template" id="modalDeleteCourse.html">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button"
+                    class="close" ng-click="cancel()" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title">Delete Course : {{deleteCourse.Code}} </h4>
+        </div>
+        <div class="modal-body">
+            <div ng-show="isDelete">
+                <div class="col-sm-12 text-center text-danger">
+                    Are you sure to delete below course?
+                </div>
+            </div>
+            <br />
+            <div ng-show="!isDelete">
+                <div class="col-sm-12 text-center text-info">
+                    You can not delete this course as it allredy assigned to {{deleteCourse.Employees.length}} 
+                    employee<span ng-show="deleteCourse.Employees.length > 1">s</span>.
+                </div>
+            </div>
+            <br /><br />
+            <div class="col-sm-12 text-center">
+                 <h4><strong> {{deleteCourse.Name}} </strong></h4>
+            </div>
+            <br />
+        </div>
+        <br /><br />
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-show="isDelete" type="button" ng-click="delete()">Delete</button>
+            <button class="btn btn-primary" ng-show="isDelete" type="button" ng-click="cancel()">Cancel</button>
+            <button class="btn btn-default" ng-show="!isDelete" type="button" ng-click="cancel()">OK</button>
+        </div>
+    </div>
+</script>
+
+
+<script type="text/ng-template" id="modalEditCourse.html">
+    <div class="modal-content">
+        <form name="editCourseForm" novalidate
+              ng-submit="update()">
+        <div class="modal-header">
+            <button type="button"
+                    class="close" ng-click="cancel()" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title">Edit Course : {{editCourse.Code}} </h4>
+        </div>
+        <div class="modal-body">
+            <div class="form-horizontal">
+                <div class="form-group"
+                     ng-class="{'has-error': (editCourseForm.name.$touched || submitFailed )&& editCourseForm.name.$invalid }">
+
+                    <label for="name" class="col-sm-2 control-label">Name</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="name" ng-model="editCourse.Name" id="name" placeholder="Course Name"
+                               ng-minlength="10"
+                               ng-maxlength="50"
+                               required>
+                        <div class="help-block has-error" ng-messages="editCourseForm.name.$error" ng-if="editCourseForm.name.$touched  || submitFailed ">
+                            <p ng-message="minlength">Course name is too short.</p>
+                            <p ng-message="maxlength">Course name is too long.</p>
+                            <p ng-message="required">Course name is required.</p>
+                        </div>
+                    </div>
+                    <!--<pre>editCourseForm.name.$error = {{ editCourseForm.name.$error | json }}</pre>-->
+
+                </div>
+                <div class="form-group"
+                     ng-class="{'has-error': (editCourseForm.code.$touched  || submitFailed ) && editCourseForm.code.$invalid }">
+
+                    <label for="code" class="col-sm-2 control-label">Code</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="code" id="code" ng-model="editCourse.Code" capitalize
+                               placeholder="Course Code (4 Characters)"
+                               ng-minlength="4"
+                               ng-maxlength="4"
+                               required>
+
+
+                        <div class="help-block has-error" ng-messages="editCourseForm.code.$error" ng-if="editCourseForm.code.$touched || submitFailed">
+                            <p ng-message="required">Course code is required.</p>
+                            <p ng-message="maxlength">Course code must have 4 Characters.</p>
+                            <p ng-message="required">Course code must have 4 Characters.</p>
+                        </div>
+                    </div>
+                    <!--<pre>editCourseForm.code.$error = {{ editCourseForm.code.$error | json }}</pre>-->
+                </div>
+                <div class="form-group">
+                    <label for="description" class="col-sm-2 control-label">Description</label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control" id="description" name="description" ng-model="editCourse.Description" placeholder="Course Description" rows="3"></textarea>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary"  type="submit">Update</button>
+            <button class="btn btn-primary"  type="button" ng-click="cancel()">Cancel</button>
+        </div>
+        </form>
+    </div>
+</script>
+
+
+<script type="text/ng-template" id="modalAddCourse.html">
+            <div class="modal-content">
+                <form name="addCourseForm" novalidate
+                     ng-submit="save()"             >
+                    <div class="modal-header">
+                        <button type="button"
+                                class="close" ng-click="cancel()" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title">Add a new Course</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-horizontal">
+                            <div class="form-group"
+                                 ng-class="{'has-error': (addCourseForm.name.$touched || submitFailed )&& addCourseForm.name.$invalid }">
+
+                                <label for="name" class="col-sm-2 control-label">Name</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="name" ng-model="newCourse.Name" id="name" placeholder="Course Name"
+                                           ng-minlength="10"
+                                           ng-maxlength="50"
+                                           required>
+                                    <div class="help-block has-error" ng-messages="addCourseForm.name.$error" ng-if="addCourseForm.name.$touched  || submitFailed ">
+                                        <p ng-message="minlength">Course name is too short.</p>
+                                        <p ng-message="maxlength">Course name is too long.</p>
+                                        <p ng-message="required">Course name is required.</p>
+                                    </div>
+                                </div>
+                                <!--<pre>addCourseForm.name.$error = {{ addCourseForm.name.$error | json }}</pre>-->
+
+                            </div><!--ng-pattern="^[A-Z]{4}$"-->
+                            <div class="form-group"
+                                 ng-class="{'has-error': (addCourseForm.code.$touched  || submitFailed ) && addCourseForm.code.$invalid }">
+
+                                <label for="code" class="col-sm-2 control-label">Code</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="code" id="code" ng-model="newCourse.Code" capitalize
+                                           placeholder="Course Code (4 Characters)"
+                                           ng-minlength="4"
+                                           ng-maxlength="4"
+                                           required>
+
+
+                                    <div class="help-block has-error" ng-messages="addCourseForm.code.$error" ng-if="addCourseForm.code.$touched || submitFailed">
+                                        <p ng-message="required">Course code is required.</p>
+                                        <p ng-message="maxlength">Course code must have 4 Characters.</p>
+                                        <p ng-message="required">Course code must have 4 Characters.</p>
+                                    </div>
+                                </div>
+                                <!--<pre>addCourseForm.code.$error = {{ addCourseForm.code.$error | json }}</pre>-->
+                            </div>
+                            <div class="form-group">
+                                <label for="description" class="col-sm-2 control-label">Description</label>
+                                <div class="col-sm-10">
+                                    <textarea class="form-control" id="description" name="description" ng-model="newCourse.Description" placeholder="Course Description" rows="3"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" type="submit" >Add Course</button>
+                        <button class="btn btn-primary" type="button" ng-click="cancel()">Cancel</button>
+                    </div>
+                </form>
+            </div>
+ 
+
+</script>
+
+
+<div>
+<br />
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <!--<button ng-hidden="!isShowCourseDataTable" ng-click="isShowCourseDataTable = !isShowCourseDataTable" class="btn btn-xs btn-default pull-right">
+                        <span class="glyphicon glyphicon-arrow-up"></span>
+                    </button>
+                    <button ng-hidden="isShowCourseDataTable" ng-click="isShowCourseDataTable = !isShowCourseDataTable" class="btn btn-xs btn-default  pull-right">
+                        <span class="glyphicon glyphicon-arrow-down"></span>
+                    </button>
+                    &nbsp;-->
+                    <span class="fa fa-cogs"></span> &nbsp;
+                    <b>Courses Admin</b>&nbsp;
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-hover table-condensed table-bordered table-responsive">
+                        <thead>
+                            <tr class="warning">
+                                <th align="center" class="hidden-xs hidden-sm"></th>
+                                <!--<th align="center">ID</th>-->
+                                <th align="center">Code</th>
+                                <th align="center" class="hidden-xs hidden-sm">Course
+                                    <button class="btn btn-xs btn-warning pull-right" title="Add" ng-click="vm.addCourse()">
+                                        Add Course <span class="glyphicon glyphicon-plus"></span> 
+                                    </button>
+                                </th>
+                                <th align="center">Employee(s)</th>
+                                <th colspan="2" align="center">Completed</th>
+                                <th colspan="2" align="center">Pending</th>
+                            </tr>
+                        </thead>
+                        <tbody ng-repeat="course in vm.Courses">
+                            <tr ng-click="course.toggleShowEmployee()" style="cursor:pointer" ng-class="course.isShowEmployee? 'info' : 'active'">
+                                <td align="center" class="hidden-xs hidden-sm">
+                                    <span class="badge badge-info">
+                                        {{$index+1}}
+                                    </span>
+                                    <!--
+                                        <button ng-show="course.isShowEmployee" ng-click="course.isShowEmployee = !course.isShowEmployee" class="btn btn-xs btn-default">
+                                        <i class="fa fa-chevron-up "></i>
+                                    </button>
+                                    <button ng-hidden="course.isShowEmployee" ng-click="course.isShowEmployee = !course.isShowEmployee" class="btn btn-xs btn-default">
+                                        <i class="fa fa-chevron-down"></i>
+                                    </button>
+                                        -->
+                                </td>
+                                <td>
+                                    <strong>{{course.Code}}</strong> 
+                                    </td>
+                                    <td class="hidden-xs hidden-sm">
+                                    {{course.Name}}                                  
+                                     <div class="btn-group pull-right" title="Delete" role="group">
+                                       <button class="btn btn-xs btn-danger" ng-click="course.deleteCourse($event)">
+                                            <span class="glyphicon glyphicon-remove"></span>
+                                        </button>
+                                    </div>
+                                   
+                                     <div class="btn-group pull-right" title="Edit" role="group">                                  
+                                         <button class="btn btn-xs btn-default" ng-click="course.editCourse($event)">
+                                            <span class="glyphicon glyphicon-pencil"></span>
+                                        </button>&nbsp;
+                                    </div>
+
+                                </td>
+                                <td align="center">
+                                    {{course.Employees.length}}
+                                </td>
+                                <td align="center">
+                                    {{(course.Employees | filter:{isComplete: true}).length}}
+                                </td>
+                                <td align="center" class="hidden-xs hidden-sm">
+                                    {{(course.Employees | filter:{isComplete: true}).length /course.Employees.length | percentage:2 }}
+                                </td>
+                                <td align="center">
+                                    {{(course.Employees | filter:{isComplete: false}).length}}
+                                </td>
+                                <td align="center" class="hidden-xs hidden-sm">
+                                    {{(course.Employees | filter:{isComplete: false}).length /course.Employees.length | percentage:2 }}
+                                </td>
+                            </tr>
+                            <tr  ng-show="course.isShowEmployee">
+                                <td colspan="8" style="padding:0 !important;">
+                                    <div class="table-responsive">
+
+                                        <table class="table table-hover table-bordered table-condensed table-responsive">
+                                            <thead>
+                                                <tr class="warning">
+                                                    <th align="center"></th>
+                                                    <th ng-sort360 order="'isComplete'" by="course.order" reverse="course.reverse" style="cursor:pointer;">Status</th>
+                                                    <th ng-sort360 order="'Name'" by="course.order" reverse="course.reverse" style="cursor:pointer;">Employee</th>
+                                                    <th ng-sort360 order="'HireDate'" by="course.order" reverse="course.reverse" style="cursor:pointer;">Hire Date</th>
+                                                    <th colspan="2">Pending</th>
+                                                    <th colspan="2">Completed</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="employee in course.Employees | orderBy:course.order:course.reverse"
+                                                    ng-class="employee.isComplete | courserowclass">
+
+                                                    <td align="center">
+                                                        <span class="badge hidden-xs hidden-sm">
+                                                            {{$index+1}}
+                                                        </span>
+                                                    </td>
+
+                                                    <td align="center">
+                                                        <span ng-show="employee.isComplete" class="glyphicon glyphicon-ok"></span>
+                                                        <span ng-hidden="employee.isComplete" class="glyphicon glyphicon-remove"></span>
+                                                    </td>
+                                                    <td>
+                                                        {{employee.Name}}
+                                                        &nbsp;
+                                                        <span ng-show="{{(employee.EmployeeCourses | filter:{isComplete: true}).length == employee.EmployeeCourses.length}}" class="label label-success">All Completed</span>
+                                                        <span ng-show="{{(employee.EmployeeCourses | filter:{isComplete: true}).length == 0}}" class="label label-danger">All Pending</span>
+                                                    </td>
+                                                    <td align="center">
+                                                        {{employee.HireDate | date: shortDate}}
+                                                    </td>
+                                                    <td align="center">
+                                                        {{(employee.EmployeeCourses | filter:{isComplete: false}).length}}
+                                                    </td>
+                                                    <td align="center">
+                                                        {{(employee.EmployeeCourses | filter:{isComplete: false}).length /employee.EmployeeCourses.length | percentage:2 }}
+                                                    </td>
+                                                    <td align="center">
+                                                        {{(employee.EmployeeCourses | filter:{isComplete: true}).length}}
+                                                    </td>
+                                                    <td align="center">
+                                                        {{(employee.EmployeeCourses | filter:{isComplete: true}).length /employee.EmployeeCourses.length | percentage:2 }}
+                                                    </td>
+
+                                                    <!--<td align="center">
+                                                        <button ng-show="employee.isComplete" ng-click="employee.changeComplete()" class="btn btn-xs btn-default"><span class="hidden-xs">mark </span>pending</button>
+                                                        <button ng-hidden="employee.isComplete" ng-click="employee.changeComplete()" class="btn btn-xs btn-success"><span class="hidden-xs">mark </span>complete</button>
+                                                    </td>-->
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tr class="info">
+                            <td colspan="3" class="hidden-xs hidden-sm">
+                                <strong><span class="pull-right">Assigned Courses</span></strong>
+                            </td>
+                            <td  class="hidden-lg hidden-md">
+                                <strong><span class="pull-right">Assigned Courses</span></strong>
+                            </td>
+                            <td align="center">
+                                {{vm.total_pending + vm.total_completed}}
+                            </td>
+                            <td align="center">
+                                {{vm.total_completed}}
+                            </td>
+                            <td align="center" class="hidden-xs hidden-sm">
+                                {{vm.total_completed/(vm.total_pending + vm.total_completed) | percentage:2}}
+                            </td>
+                            <td align="center">
+                                {{vm.total_pending}}
+                            </td>
+
+                            <td align="center" class="hidden-xs hidden-sm">
+                                {{vm.total_pending/(vm.total_pending + vm.total_completed) | percentage:2}}
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br /><br /><br /><br /><br /><br />
+</div>

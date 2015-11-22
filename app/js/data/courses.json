@@ -1,0 +1,67 @@
+﻿{
+    "Courses": 
+        [
+{
+    "$id": "1",
+    "CourseID": 1,
+    "Name": "AAA Online Inventory Managment System",
+    "Code": "OIMS",
+    "Description": "Online Inventory Managment System",
+    "EmployeeCourses": [],
+    "isSelect": false,
+    "isDisable": false
+},
+{
+    "$id": "2",
+    "CourseID": 2,
+    "Name": "Fundamentals of Supply & Demand Logistics",
+    "Code": "FSDL",
+    "Description": "Fundamentals of supply and demand logistics",
+    "EmployeeCourses": [],
+    "isSelect": false,
+    "isDisable": false
+},
+{
+    "$id": "3",
+    "CourseID": 3,
+    "Name": "Call Center Management Process ",
+    "Code": "CCMP",
+    "Description": "Call Center Management Process ",
+    "EmployeeCourses": [],
+    "isSelect": false,
+    "isDisable": false
+},
+{
+    "$id": "4",
+    "CourseID": 4,
+    "Name": "Refund Process Admin System",
+    "Code": "RPAS",
+    "Description": "Refund Process Admin System",
+    "EmployeeCourses": [],
+    "isSelect": false,
+    "isDisable": false
+},
+{
+    "$id": "5",
+    "CourseID": 5,
+    "Name": "Fundamentals of Inventory Management",
+    "Code": "FIMN",
+    "Description": "Fundamentals of inventory management",
+    "EmployeeCourses": [],
+    "isSelect": false,
+    "isDisable": false
+},
+{
+    "$id": "6",
+    "CourseID": 6,
+    "Name": "Product & Product Code Familiarization",
+    "Code": "PPCF",
+    "Description": "Product & Product Code Familiarization",
+    "EmployeeCourses": [],
+    "isSelect": false,
+    "isDisable": false
+}
+        ]
+
+
+}

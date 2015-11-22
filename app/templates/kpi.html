@@ -1,0 +1,164 @@
+﻿<div class="row">
+    <br />
+    <div ac-chart="'bar'"
+         ac-data="employee_data"
+         ac-config="employee_config"
+         id='employee_chart'
+         class='chart'>
+    </div>
+
+    <br />
+
+    <div class="col-md-8">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <button ng-hide="!isShowEmployeeDataTable" ng-click="isShowEmployeeDataTable = !isShowEmployeeDataTable" class="btn btn-xs btn-default pull-right">
+                    <span class="glyphicon glyphicon-arrow-up"></span>
+                </button>
+                <button ng-hide="isShowEmployeeDataTable" ng-click="isShowEmployeeDataTable = !isShowEmployeeDataTable" class="btn btn-xs btn-default pull-right">
+                    <span class="glyphicon glyphicon-arrow-down"></span>
+                </button>
+                &nbsp;
+                <span class="fa fa-line-chart"></span> &nbsp;
+                <b>Employees KPI Data</b>&nbsp;
+            </div>
+
+            <div ng-show="isShowEmployeeDataTable" class="table-responsive">
+                <table class="table table-hover table-condensed table-bordered table-responsive">
+                    <thead>
+                        <tr class="warning">
+                            <th align="center"></th>
+                            <th>Course(s) Completed</th>
+                            <th align="center">Employee(s)</th>
+                            <th align="center">%</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="data in employee_data.data">
+                            <td align="center">
+                                <span class="badge">
+                                    {{$index+1}}
+                                </span>
+                            </td>
+                            <td class="hidden-xs">
+                                <strong> {{data.x}}</strong>
+                            </td>
+                            <td align="center">
+                                {{data.y[0]}}
+                            </td>
+                            <td align="center">
+                                {{ data.y[0]/TotalEmployee | percentage:2}}
+                            </td>
+                        </tr>
+                        <tr class="info">
+                            <td></td>
+                            <td align="left"><strong>Total Employees:</strong></td>
+                            <td align="center"><strong>{{TotalEmployee}}</strong></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div>
+            </div>
+        </div>
+</div>
+<br />
+
+<div class="row">
+    <br />
+    <div ac-chart="'bar'"
+         ac-data="course_data"
+         ac-config="course_config"
+         id='test_chart'
+         class='chart'>
+    </div>
+    <br />
+
+
+    <div class="row">
+        <div class="col-md-10">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <button ng-hide="!isShowCourseDataTable" ng-click="isShowCourseDataTable = !isShowCourseDataTable" class="btn btn-xs btn-default pull-right">
+                        <span class="glyphicon glyphicon-arrow-up"></span>
+                    </button>
+                    <button ng-hide="isShowCourseDataTable" ng-click="isShowCourseDataTable = !isShowCourseDataTable" class="btn btn-xs btn-default  pull-right">
+                        <span class="glyphicon glyphicon-arrow-down"></span>
+                    </button>
+                    &nbsp;
+                    <span class="fa fa-line-chart"></span> &nbsp;
+                    <b>Courses KPI Data</b>&nbsp;
+                </div>
+
+                <div ng-show="isShowCourseDataTable" class="table-responsive">
+                    <table class="table table-hover table-condensed table-bordered table-responsive">
+                        <thead>
+                            <tr class="warning">
+                                <th align="center"></th>
+                                <th align="center">Course</th>
+                                <th align="center">Employee(s)</th>
+                                <th colspan="2" align="center">Completed</th>
+                                <th colspan="2" align="center">Pending</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="data in course_data.data">
+                                <td align="center">
+                                    <span class="badge">
+                                        {{$index+1}}
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <strong> {{data.x}}</strong>
+                                    <span class="hidden-xs hide-sm"> :  {{data.tooltip}} </span>
+                                </td>
+                                <td align="center">
+                                    {{data.y[0]}}
+                                </td>
+                                <td align="center">
+                                    {{data.y[1]}}
+                                </td>
+                                <td align="center">
+                                    {{data.y[1] / data.y[0] | percentage:2 }}
+                                </td>
+                                <td align="center">
+                                    {{data.y[2]}}
+                                </td>
+                                <td align="center">
+                                    {{data.y[2] / data.y[0] | percentage:2 }}
+                                </td>
+                            </tr>
+
+                            <tr class="info">
+                                <td>                                  
+                                </td>                                
+                                <td>
+                                    <strong>Total Courses</strong>
+                                </td>
+                                <td align="center">
+                                    {{total_courses}}
+                                </td>
+                                <td align="center">
+                                    {{total_pass}}
+                                </td>
+                                <td align="center">
+                                    {{total_pass/total_courses | percentage:2}}
+                                </td>
+                                <td align="center">
+                                    {{total_courses - total_pass}}
+                                </td>
+
+                                <td align="center">
+                                    {{(total_courses - total_pass)/total_courses | percentage:2}}
+                                </td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>    <br />
