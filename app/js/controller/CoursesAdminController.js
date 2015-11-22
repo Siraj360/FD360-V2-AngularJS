@@ -175,21 +175,11 @@
                             employee = employees[i];
                             employee.CourseID = courses[x].CourseID;
                             employee.TotalCourses = employees[i].EmployeeCourses.length;
-                          //  employee.EmployeeCourses = [];                            
                             employee.TotalCompleted = employees[i].EmployeeCourses.filter(
                                                      function (value) {return (value.isComplete == true); }
                                                   ).length;
 
                             employee.isComplete = employees[i].EmployeeCourses[j].isComplete;
-
-                            //employee.changeComplete = function () {
-                            //    debugger;
-                            //   // employees[i].EmployeeCourses[j].isComplete = employees[i].EmployeeCourses[j].isComplete
-                            //    this.isComplete = !this.isComplete;
-                            //    vm.Employees.EmployeeCourses.filter(
-                            //                         function (value) { return (value.CourseID == this.CourseID); }
-                            //                      ).isComplete = this.isComplete;
-                            //}
 
                             courses[x].Employees.push(employee);
 
@@ -201,22 +191,11 @@
                                 courses[x].Pending++
                                 vm.total_pending++
                             }
-
-
                             courses[x].deleteCourse = deleteCourse;
                             courses[x].editCourse = editCourse;
-
-
-
-
-
                         }
-
                         
                     }
-
- 
-
                 }
 
 
@@ -225,8 +204,5 @@
 
             vm.Courses = courses
         }
-
-
     };
-
 })();
