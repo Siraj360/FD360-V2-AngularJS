@@ -7,10 +7,10 @@ A sample single page application (SPA) developed with AngularJS 1.3.8 and Bootst
 
 
 
-####Online demo at www.Siraj360.com/FD360/
+####Online demo at http://www.siraj360.com/ng/
 
 __Last update on:__
-Decemeber 30, 2014.
+September 21, 2015.
 
 
 
